@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car History Details</title>
+    <link rel="stylesheet" href="../getCarData/getCarData.css" />
+  </head>
+  <body style="height: 100vh; display: flex; align-items: center">
+    <div class="container">
+      <h1 class="heading">Vehicle Details</h1>
+      <div class="carHistoryDetails">
+        <h2 id="vehicleId"></h2>
+        
+        <p id="kmReading"></p>
+        <p id="timestamp"></p>
+        <p id="createdOn"></p>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const carHistoryData = JSON.parse(localStorage.getItem('carHistoryData'));
+
+        if (carHistoryData && carHistoryData.reading && carHistoryData.reading.length > 0) {
+          const reading = carHistoryData.reading[0];
+          document.getElementById('vehicleId').textContent = `Vehicle ID: ${reading.vehicleId}`;
+          document.getElementById('kmReading').textContent = `KM Reading: ${reading.kmReading}`;
+          // document.getElementById('timestamp').textContent = `Last Updated: ${new Date(reading.timestamp).toLocaleString()}`;
+          document.getElementById('createdOn').textContent = `Created On: ${new Date(reading.createdOn).toLocaleString()}`;
+        } else {
+          document.querySelector('.carHistoryDetails').textContent = 'No data available';
+        }
+      });
+    </script>
+  </body>
+</html>

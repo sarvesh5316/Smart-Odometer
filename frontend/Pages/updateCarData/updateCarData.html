@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car History Update</title>
+    <link rel="stylesheet" href="../updateCardata/updateCarData.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form id="updateForm">
+        <h1>Car History Update</h1>
+        <div class="form-group">
+          <label for="carRegNoI">Car Reg No</label>
+          <input id="carRegNoI" type="text" required />
+        </div>
+        <div class="form-group">
+          <label for="Car">Car travelled Distance(KM)</label>
+          <input id="Car" type="number" required />
+        </div>
+        <div class="form-group">
+          <button type="submit" id="submitbutton">Update History</button>
+        </div>
+        <div id="resultMessage" class="result-message"></div>
+      </form>
+    </div>
+
+    <script>
+      document.getElementById('updateForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+        
+        const carRegNo = document.getElementById('carRegNoI').value;
+        const Car = document.getElementById('Car').value;
+        const resultMessage = document.getElementById('resultMessage');
+
+        const data = {
+          vehicleId: carRegNo,
+          kmReading: Car
+        };
+
+        try {
+          const response = await fetch('http://localhost:3000/api/v1/kmroutes/addOrUpdate', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          });
+
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Network response was not ok');
+          }
+
+          const result = await response.json();
+          resultMessage.textContent = 'Car history updated successfully!';
+          resultMessage.style.color = 'green';
+          console.log(result); // Optionally log the result or handle it further
+        } catch (error) {
+          resultMessage.textContent = `${error.message}`;
+          resultMessage.style.color = 'red';
+          console.error('There was an error!', error);
+        }
+      });
+    </script>
+  </body>
+</html>

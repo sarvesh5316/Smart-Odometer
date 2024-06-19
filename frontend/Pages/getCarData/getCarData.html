@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car History</title>
+    <link rel="stylesheet" href="../getCardata/getCarData.css" />
+  </head>
+  <body style="height: 100vh; display: flex; align-items: center">
+    <div class="container">
+      <h1 class="heading">Get Your Car Details</h1>
+      <div class="form-group">
+        <label for="carRegNoS">Car Reg No.</label>
+        <input
+          id="carRegNoS"
+          class="carRegNoS"
+          type="text"
+          placeholder="Enter your car registration number"
+        />
+        <div class="getHistory1">
+          <div class="getHistory2">
+            <button onclick="getCarHistory()">Get Result</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      async function getCarHistory() {
+        const carRegNo = document.getElementById('carRegNoS').value;
+
+        if (!carRegNo) {
+          alert('Please enter a car registration number.');
+          return;
+        }
+
+        try {
+          const response = await fetch(`http://localhost:3000/api/v1/kmroutes/vehicle/${carRegNo}`);
+          
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+
+          const data = await response.json();
+          localStorage.setItem('carHistoryData', JSON.stringify(data));
+          window.location.href = 'carHistory.html';
+        } catch (error) {
+          alert(`Error: ${error.message}`);
+        }
+      }
+    </script>
+  </body>
+</html>

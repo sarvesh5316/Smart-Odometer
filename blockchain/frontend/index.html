@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Odometer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h1>Smart Odometer</h1>
+      <div>
+        <h2>Add Vehicle</h2>
+        <input type="text" id="vin" placeholder="VIN" />
+        <input type="text" id="make" placeholder="Make" />
+        <input type="text" id="model" placeholder="Model" />
+        <input type="number" id="year" placeholder="Year" />
+        <input type="number" id="mileage" placeholder="Mileage" />
+        <button id="addVehicle">Add Vehicle</button>
+      </div>
+      <div>
+        <h2>Fetch Vehicle</h2>
+        <input type="text" id="fetchVin" placeholder="VIN" />
+        <button id="fetchVehicle">Fetch Vehicle</button>
+        <div id="vehicleDetails"></div>
+      </div>
+      <div>
+        <h2>Update Vehicle</h2>
+        <input type="text" id="updateVin" placeholder="VIN" />
+        <input type="text" id="updateMake" placeholder="Make" />
+        <input type="text" id="updateModel" placeholder="Model" />
+        <input type="number" id="updateYear" placeholder="Year" />
+        <input type="number" id="updateMileage" placeholder="Mileage" />
+        <button id="updateVehicle">Update Vehicle</button>
+      </div>
+      <div>
+        <h2>Account</h2>
+        <div id="account"></div>
+      </div>
+    </div>
+
+    <!-- Load Web3.js -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

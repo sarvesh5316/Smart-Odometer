@@ -1,0 +1,28 @@
+{
+  "name": "odotracker",
+  "version": "1.0.0",
+  "description": "final year project backend",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm start",
+    "build": "npm i",
+    "start": "cd src && npx nodemon"
+  },
+  "author": "sarvesh Gond",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "helmet": "^7.1.0",
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.2.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.1.0",
+    "path": "^0.12.7",
+    "uuid": "^9.0.1"
+  }
+}

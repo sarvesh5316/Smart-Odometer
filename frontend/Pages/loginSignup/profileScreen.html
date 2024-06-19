@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="profile-wrapper">
+    <h1>User Profile</h1>
+    <div class="profile-details">
+      <div class="profile-field">
+        <span class="field-label">Full Name:</span>
+        <span id="fullName" class="field-value"></span>
+      </div>
+      <div class="profile-field">
+        <span class="field-label">Email:</span>
+        <span id="email" class="field-value"></span>
+      </div>
+      <div class="profile-field">
+        <span class="field-label">Phone Number:</span>
+        <span id="phoneNumber" class="field-value"></span>
+      </div>
+      <div class="profile-field">
+        <span class="field-label">City:</span>
+        <span id="city" class="field-value"></span>
+      </div>
+      <div class="profile-field">
+        <span class="field-label">State:</span>
+        <span id="state" class="field-value"></span>
+      </div>
+      <div class="profile-field">
+        <span class="field-label">Address:</span>
+        <span id="address" class="field-value"></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Retrieve user details from local storage or backend API and populate the profile
+      const user = JSON.parse(localStorage.getItem('user')); // Assuming user details are stored in local storage
+
+      if (user) {
+        document.getElementById('fullName').textContent = user.fullName || '';
+        document.getElementById('email').textContent = user.email || '';
+        document.getElementById('phoneNumber').textContent = user.phoneNumber || '';
+        document.getElementById('city').textContent = user.city || '';
+        document.getElementById('state').textContent = user.state || '';
+        document.getElementById('address').textContent = user.address || '';
+      }
+    });
+  </script>
+</body>
+</html>
